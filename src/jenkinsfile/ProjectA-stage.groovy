@@ -40,6 +40,8 @@ pipeline{
 				 println "is_marry:" + is_marry
 				 is_smoke = prop.SMOKE? prop.SMOKE : false
 				 println "is_smoke:" + is_smoke
+				 full_test = prop.FULL_TEST? prop.FULL_TEST : false
+				 rintln "full_test:" + full_test
             }
          }
       }
@@ -52,10 +54,10 @@ pipeline{
 			   }
 		   }
 	   }	  	  
-		stage("check serive up") {
+	   stage("check serive up") {
 		    when {
 		        expression {
-		            return (is_smoke == true)
+		            return (is_smoke == true || full_test == true)
 		        }
 		    }
 		    steps {
@@ -67,7 +69,7 @@ pipeline{
         stage("check UI login") {
 	        when {
 			    expression {
-			        return (is_smoke == true)
+			        return (is_smoke == true || full_test == true)
 			    }
 			}
 		    steps {
@@ -80,7 +82,7 @@ pipeline{
 		stage("Integrate-ModelA") {
 	        when {
 			    expression {
-			        return (is_smoke == false)
+			        return (is_smoke == false || full_test == true)
 			    }
 			}
 		    steps {
@@ -93,7 +95,7 @@ pipeline{
 		stage("Integrate-ModelB") {
 	        when {
 			    expression {
-			        return (is_smoke == false)
+			        return (is_smoke == false || full_test == true)
 			    }
 			}
 		    steps {
@@ -101,7 +103,7 @@ pipeline{
 					println "Integrate-ModelB"
 				}
 			}
-		}	      
+		}   
 	}
 
 }

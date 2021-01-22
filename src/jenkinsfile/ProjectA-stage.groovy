@@ -41,7 +41,7 @@ pipeline{
 				 is_smoke = prop.SMOKE? prop.SMOKE : false
 				 println "is_smoke:" + is_smoke
 				 full_test = prop.FULL_TEST? prop.FULL_TEST : false
-				 rintln "full_test:" + full_test
+				 println "full_test:" + full_test
             }
          }
       }

@@ -27,6 +27,7 @@ pipeline{
                 prop = readJSON file : json_file
                 name = prop.NAME? prop.NAME.trim() : ""
                 println "Name:" + name
+				println "EMail:" + prop.EMAIL? prop.EMAIL.trim() : ""
             }
          }
       }

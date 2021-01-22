@@ -5,7 +5,7 @@ pipeline{
 
    agent any
    parameters {
-	   string(name: '#INPUT_JSON', defaultValue: '/tmp/test/test1.json', description: 'Enter Json File Path')
+	   string(name: 'INPUT_JSON', defaultValue: '/tmp/test/test.json', description: 'Enter Json File Path')
    }
    stages{
       stage("Hello Pipeline") {
